@@ -2,10 +2,11 @@
   "name": "animations",
   "version": "0.0.0",
   "scripts": {
-    "start": "node app.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "heroku-prebuild": "echo This runs before Heroku installs your dependencies.",
-    "heroku-postbuild": "npm install --prefix ./client"
+    "ng": "ng",
+    "start": "ng serve",
+    "build": "ng build",
+    "watch": "ng build --watch --configuration development",
+    "test": "ng test"
   },
   "private": true,
   "dependencies": {
@@ -34,8 +35,5 @@
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "~1.7.0",
     "typescript": "~4.6.2"
-  },
-  "engines": {
-    "node": "4.1.1"
   }
 }
