@@ -71,8 +71,7 @@
               "browserTarget": "Animations:build:production"
             },
             "development": {
-              "browserTarget": "Animations:build:development",
-              "port": 3001
+              "browserTarget": "Animations:build:development"
             }
           },
           "defaultConfiguration": "development"
