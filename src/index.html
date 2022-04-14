@@ -1,13 +1,351 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="utf-8">
-  <title>Animations</title>
-  <base href="/">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/ScrollMagic.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/plugins/debug.addIndicators.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
 </head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+
+  $(document).ready(function () {
+
+
+  });
+</script>
+<style>
+  body {
+    margin: 0px;
+    padding: 0px;
+  }
+
+  .wrapper-site {
+    background-color: #444444;
+  }
+
+  header {
+    background-color: #1976d2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* 1976d2 */
+  @keyframes example {
+    0% {
+      top: 14%;
+    }
+
+    2% {
+      color: rgba(240, 248, 255, 0.253);
+    }
+
+    50% {
+      top: -20%;
+      ;
+    }
+  }
+
+  @keyframes example1 {
+    0% {
+      top: -20%;
+    }
+
+    20% {
+      color: rgba(240, 248, 255, 0.253);
+    }
+
+    50% {
+      top: 14%;
+      ;
+    }
+  }
+
+  #conten {
+    overflow-y: auto;
+    width: 100%;
+    height: 700px;
+  }
+
+  #bod {
+    position: fixed;
+    float: left;
+    width: 80%;
+    height: 500px;
+    background-color: rgba(26, 31, 31, 0);
+    overflow-y: auto;
+    scrollbar-width: none;
+    scrollbar-width: inherit;
+    color: aliceblue;
+    z-index: +1;
+  }
+
+  #text {
+    position: fixed;
+    animation-duration: 4s;
+
+  }
+
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  #inbod {
+    width: 100%;
+    height: 10000px;
+    overflow-y: auto;
+    scrollbar-width: none;
+    padding-left: 100px;
+    padding-top: 100px;
+
+  }
+
+  #right {
+    position: fixed;
+    float: right;
+    right: 20px;
+    width: 30%;
+    height: 500px;
+    background-color: rgb(109, 119, 119);
+    overflow-y: auto;
+
+
+  }
+
+  #inn {
+    width: 100%;
+    height: 2000px;
+    overflow-y: auto;
+
+
+  }
+
+  #one,
+  #two,
+  #three {
+    position: relative;
+    width: 100%;
+    height: 500px;
+
+    border: 1px solid;
+  }
+
+  #one {
+    background-image: url('iPhone-400-promo-shop-banner-1280.png');
+    background-size: cover;
+
+  }
+
+  #two {
+    background-image: url('LMK315IM-350-03.jpg');
+    background-size: cover;
+
+  }
+
+  #three {
+    background-image: url('no_image.png');
+    background-size: cover;
+
+  }
+
+  #texts {
+    position: fixed;
+    width: 65%;
+    height: 500px;
+    top: 200px;
+    background-color: rgba(51, 50, 47, 0);
+    overflow-y: auto;
+  }
+
+  #long {
+    position: fixed;
+    font-size: 30px;
+    top: 10px;
+    padding-top: 300px;
+    padding-right: 400px;
+    color: rgba(233, 227, 227, 0);
+    height: 200px;
+    width: 75%;
+    overflow-y: auto;
+    background-color: rgb(26, 31, 31);
+
+  }
+
+  #copylong {
+    position: fixed;
+    font-size: 30px;
+    top: 300px;
+    margin-left: 50px;
+    margin-right: 500px;
+    color: rgba(233, 227, 227, 0.301);
+    height: 2000px;
+    overflow-y: auto;
+  }
+
+  #scrol {
+    position: relative;
+    width: 100%;
+    height: 20000px;
+    overflow-y: auto;
+  }
+</style>
+
+
 <body>
-  <app-root></app-root>
+  <div class="wrapper-site">
+
+    <div id="conten">
+
+      <div id="bod">
+        <header>
+          <div class="site-logo">
+            <h5>Welcome to test</h5>
+          </div>
+        </header>
+        <div id="inbod">
+          <h1 id="text">Trigger CSS Animations</h1>
+        </div>
+      </div>
+      <div id="texts">
+        <div id="copylong"> </div>
+        <div id="long"> </div>
+      </div>
+      <button id="btn3"></button>
+      <button id="btn4"></button>
+      <button id="btn5" class="call1"></button>
+      <button id="btn6" class="call2"></button>
+      <button id="btn7" class="text"></button>
+    </div>
+  </div>
+  <script>
+    // init controller
+
+
+
+
+
+
+    var isSyncingLeftScroll = false;
+    var isSyncingRightScroll = false;
+    var leftDiv = document.getElementById('bod');
+    var inbodd = document.getElementById('inbod');
+
+    var co = 0;
+    var co1 = 0;
+    var co2 = 0;
+
+    var newText = "";
+    var arr = []; // this for scroll
+    var arr1 = [];//this for add remove text
+    var words = "Arizona parents representing various geographic areas, income levels, and racial and ethnic backgrounds reported changing jobs, turning down jobs, decreasing their hours, forgoing promotions or leaving the workforce entirely as a result of inconsistent or u";
+    var len = words.length;
+    for (var ty = 0; ty < words.length; ty++) {
+      newText += '<span class="rem" style="position:relative;font-size:30px; color:gray">' + words[ty] + '</span>';
+      long.innerHTML = newText;
+    }
+
+    leftDiv.onscroll = function () {
+
+      if (!isSyncingLeftScroll) {
+        isSyncingRightScroll = true;
+        if (leftDiv.scrollTop >= 10 && leftDiv.scrollTop <= 25) {
+
+          $('#btn3').click();
+          $('#btn4').click();
+
+        }
+
+        if (leftDiv.scrollTop >= 500 && leftDiv.scrollTop <= 700) {
+
+          $('#btn5').click();
+          $('#btn6').click();
+          $('#btn7').click();
+
+        }
+        var char = words.split("");
+
+        arr.push(leftDiv.scrollTop);
+
+
+
+        if (arr[0] <= arr[1] && arr.length >= 2) {
+
+          if (co <= words.length - 1) {
+
+            document.getElementsByClassName("rem")[co].style.color = "white";
+            co = co + 1;
+            console.log(co);
+          }
+          arr1.push(char[co]);
+
+
+        }
+
+
+
+        if (arr[0] >= arr[1]) {
+          if (co != 0) {
+
+            //document.getElementsByClassName("rem")[co-1].style.color="red";
+            co = co - 1;
+
+            document.getElementsByClassName('rem')[co].style.color = "gray";
+
+            document.getElementsByClassName('rem')[co].style.color = "gray";
+
+            document.getElementsByClassName('rem')[co].style.color = "gray";
+
+
+          }
+
+        }
+
+        if (leftDiv.scrollTop <= 100 && leftDiv.scrollTop >= 10) {
+          text.style.animationName = "example";
+        }
+        if (leftDiv.scrollTop >= 100 && leftDiv.scrollTop <= 200) {
+          text.style.animationName = "example1";
+
+        }
+
+
+
+
+      }
+      isSyncingLeftScroll = false;
+
+      if (arr.length >= 4) {
+        arr.length = 0;
+      }
+    }
+
+
+
+    //txtes scroll
+
+
+
+    texts.onscroll = function () {
+      if (!isSyncingLeftScroll) {
+        isSyncingRightScroll = true;
+        texts.scrollTop = this.scrollTop;
+
+        console.log("ttt");
+
+
+      }
+      isSyncingLeftScroll = false;
+    }
+
+  </script>
+
+
 </body>
+
 </html>
